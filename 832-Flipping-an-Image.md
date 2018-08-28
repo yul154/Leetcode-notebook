@@ -2,8 +2,11 @@
 
 # Example:
 Input: [[1,1,0,0],[1,0,0,1],[0,1,1,1],[1,0,1,0]]
+
 Output: [[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]]
+
 Explanation: First reverse each row: [[0,0,1,1],[1,0,0,1],[1,1,1,0],[0,1,0,1]].
+
 Then invert the image: [[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]]
 
 # code
@@ -33,4 +36,7 @@ rows = len(A)
         return A
 """
 ```
-M
+Mark points:
+1. `[::-1]`:list[<start>:<stop>:<step>] as same as `reverse()`
+2. `l[n]=1-l[n]`:reverse 1 and 0
+3. `^`: outputs true only when inputs differ (one is true, the other is false).[1]
