@@ -3,6 +3,7 @@
 > Implement function ToLowerCase() that has a string parameter str, and returns the same string in lowercase.
 
 
+```
 class Solution:
     def toLowerCase(self, str):
         """
@@ -18,4 +19,8 @@ class Solution:
             else:
                 rst+=s
         return rst
- `
+```
+## Mark point
+1. lower case > upper case
+2. `ord()`:returns an integer representing Unicode code point for the given Unicode character
+3. `chr()`:returns a character (a string) from an integer (represents unicode code point of the character).
