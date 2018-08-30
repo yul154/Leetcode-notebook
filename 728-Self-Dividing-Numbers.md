@@ -45,9 +45,11 @@ return filter(check, range(left, right + 1))
     L1=list(filter(lambda n:n%2==1,range(1,20)))
     L2=list(map(lambda n:n%2==1,range(1,20)))
 ```
- 3. `reduce()`: return a single value which is cumulation from left to right.
+3. `reduce()`: return a single value which is cumulation from left to right.
  `reduce(lambdax,y:x+y,range(20))`
- 
- 4. List comprehension:[expression(variable) for variable in input_set [predicate][, …]]
+4. List comprehension:[expression(variable) for variable in input_set [predicate][, …]]
  `[n for n in [1, 2, 3] if n % 2]`
- 5. `any`: Returns a Boolean value that indicates whether the collection contains any values that evaluate to True which means not '',0 and False
+5. `any`: Returns a Boolean value that indicates whether the collection contains any values that evaluate to True which means not '',0 and False
+6. `joint`：Returns a string made from the elements of an iterable.
+ `print(list(n for n in ''.join(['abc','de']])))`
+ `print(word[i] for words in ['abc','de'] for i in range(len(words)))`
