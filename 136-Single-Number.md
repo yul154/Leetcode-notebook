@@ -24,3 +24,12 @@ class Solution(object):
         
         return int(target[0])
 ```
+
+```
+return reduce(lambda x,y:x^y,nums)
+# return reduce(operator.xor, nums)
+```
+
+# Mark points:
+1. `reduce()`:Applies function of two arguments cumulatively to the items of iterable, from left to right(return single number)
+2. `operator.xor`(^):same return 0, n^0 return n
