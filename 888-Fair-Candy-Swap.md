@@ -16,15 +16,10 @@ Output: [5,4]
 ```
 b=set(B)
 middle=(sum(A)+sum(B))/2
-k= abs(middle - sum(A))
-if sum(A)<sum(B):
-    for i in A:
-        if i+k in b:
-            return [i,i+k]
-if sum(A)>sum(B):
-     for i in A:
-        if i-k in b:
-            return [i,i-k]
+k=middle - sum(A)
+for i in A:
+    if i+k in b:
+       return [i,i+k]
 ```
 ```
 b=set(B)
@@ -35,5 +30,4 @@ for i in A:
        return [i,j]
 ```
 # Mark points
-1。
-```
+1. don't care about the key is positive or negative
