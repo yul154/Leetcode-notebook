@@ -41,3 +41,19 @@ def postorder(self, root):
         return postorder(root,res)
             
 ```
+
+# Inorder
+```
+def inorderTraversal(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        """
+        res=[]
+        if root:
+            res+=self.inorderTraversal(root.left)
+            res.append(root.val)
+            res+=self.inorderTraversal(root.right)
+        return res
+        
+```
