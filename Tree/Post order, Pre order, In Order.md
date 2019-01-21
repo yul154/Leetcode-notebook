@@ -39,7 +39,18 @@ def postorder(self, root):
             lst.append(node.val)
             return lst
         return postorder(root,res)
-            
+        
+def postorder(self,root):
+        res=[]
+        if root:
+            stack=[root]
+            while stack:
+                cur=stack.pop()
+                if cur:
+                    res.append(cur.val)
+                for i in cur.children:
+                    stack.append(i)
+        return res[::-1]           
 ```
 
 # Inorder
