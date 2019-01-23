@@ -25,6 +25,45 @@ def topsort(graph):
 
 # 207 course schedule 
 
+## Iteration
 ```
-
+def canFinish(self, numCourses, prerequisites):
+        degrees=[0]*numCourses
+        new_cour={}
+        count=0
+        for cou,pre in prerequisites:
+            degrees[cou]+=1
+            if pre not in new_cour:
+                new_cour[pre]=[]
+            new_cour[pre].append(cou)
+        stack=[i for i in range(len(degrees)) if degrees[i]==0]
+        while stack:
+            cur=stack.pop()
+            count+=1
+            if cur in new_cour:
+                for nei in new_cour[cur]:
+                    degrees[nei]-=1
+                    if degrees[nei]==0:
+                        stack.append(nei)
+        return count==numCourses
+                    
+```
+## DFS recursive
+```
+def canFinish(self, numCourses, prerequisites):
+        def dfs(graph,node,visited):
+            visited[node]=0
+            for nei in graph[node]:
+                if (nei not in visited and not dfs(graph,nei,visited)) or visited[nei]==0:
+                    return False
+            visited[node]=1
+            return True
+        graph=[[] for i in range(numCourses)]
+        visited={}
+        for u,v in prerequisites:
+            graph[u].append(v)
+        for v in range(numCourses):
+            if v not in visited and not dfs(graph,v,visited):
+                return False
+        return True
 ```
