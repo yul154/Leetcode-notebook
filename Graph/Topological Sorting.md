@@ -1,6 +1,7 @@
 # Topological Sorting
 > A topological sort takes a directed acyclic graph and produces a linear ordering of all its vertices
 * Detect DAG(directed acyclic graph)
+* Detect relative connection
 
 ```
 def topsort(graph):
