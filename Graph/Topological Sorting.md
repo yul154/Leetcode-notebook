@@ -41,7 +41,7 @@ def model_topological_sort(graph):
                 queue.append(nei)
 
 ```
-# Topological sort with DFS(Tarjan's Algorithms)
+## Topological sort with DFS(Tarjan's Algorithms)
 > Tarjan's Algorithms (wiki)： DFS based， loop through each node of the graph in an arbitrary order，initiating a depth-first search that terminates when it hits any node that has already been visited since the beginning of the topological sort or the node has no outgoing edges 
 ```
 for each node:
