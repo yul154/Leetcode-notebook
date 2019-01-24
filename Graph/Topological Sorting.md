@@ -1,7 +1,7 @@
 # Topological Sorting
 > A topological sort takes a directed acyclic graph and produces a linear ordering of all its vertices
 * Detect DAG(directed acyclic graph)
-* Detect relative connection
+* Dependency resolution
 
 ```
 def topsort(graph):
@@ -22,6 +22,22 @@ def topsort(graph):
             if degrees[v]==0:
                 start.append(v)
     return res
+```
+
+```
+def model_topological_sort(graph):
+    indegrees=[0 for i in range(vertices_num)]# value is the number of connection it has
+    outdegrees=[[] for in range(vertices_num)]# adjacent list
+    queue=deque([index for index,node in enumerate(indegress) if not node])
+    count=0
+    while queue:
+        cur=queue.popleft()
+        count+=1
+        for nei in graph[cur]:
+            indegrees[nei]-=1
+            if indegrees[nei]==1:
+                queue.append(nei)
+
 ```
 
 # 207 course schedule 
