@@ -120,3 +120,31 @@ class Trie(object):
             cur=cur[char]
         return True
 ```
+# 745
+* Using dictionary
+```
+class WordFilter:
+    def __init__(self, words):
+        """
+        :type words: List[str]
+        """
+        self.root={}
+        for idx,word in enumerate(words):
+            for pre in range(len(word)+1):
+                prefix=word[:pre]
+                for suf in range(len(word)+1):
+                    suffix=word[suf:]
+                    self.root[(prefix,suffix)]=idx
+ 
+    def f(self, prefix, suffix):
+        """
+        :type prefix: str
+        :type suffix: str
+        :rtype: int
+        """
+        return self.root.get((prefix,suffix),-1)
+```
+* Using trie
+```
+
+```
