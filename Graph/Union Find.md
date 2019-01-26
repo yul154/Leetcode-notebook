@@ -110,6 +110,40 @@ def countComponents(self, n, edges):
 ```
 ## 399
  ```
+ def calcEquation(self, equations, values, queries):
+        tags,weights,res={},{},[]
+        for (u,v),w in zip(equations,values):
+            if u not in tags:
+                tags[u]=u
+                weights[u]=1.0
+            if v not in tags:
+                tags[v]=v
+                weights[v]=1.0
+            self.union(u,v,tags,weights,w)
+        for e1,e2 in queries:
+            if e1 not in tags or e2 not in tags:
+                res.append(-1.0)
+            else:
+                root1,root2=self.find(e1,tags,weights),self.find(e2,tags,weights)
+                if root1!=root2: res.append(-1.0)
+                else: res.append(weights[e1]/weights[e2])#
+        return res
+ def union(self,e1,e2,tags,weights,w):
+     root1=self.find(e1,tags,weights)
+     root2=self.find(e2,tags,weights)
+     if root1!=root2:
+         tags[root1]=root2
+         weights[root1]=w*(weights[e2]/weights[e1])#
+ def find(self,e,tags,weights):
+     if e!=tags[e]:
+         p=tags[e]#
+         tags[e]=self.find(tags[e],tags,weights)
+         weights[e]=weights[e]*weights[p]#
+     return tags[e]
  ```
 ## 547
+
+```
+
+```
 ## 684
