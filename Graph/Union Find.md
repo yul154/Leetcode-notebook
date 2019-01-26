@@ -142,8 +142,60 @@ def countComponents(self, n, edges):
      return tags[e]
  ```
 ## 547
+```
+def findCircleNum(self, M):
+        """
+        :type M: List[List[int]]
+        :rtype: int
+        """
+        count=length=len(M)
+        tags=[i for i in range(length)]
+        for i in range(length):
+            for j in range(length):
+                if M[i][j]==1:
+                    root1=self.find(i,tags)
+                    root2=self.find(j,tags)
+                    if root1!=root2: 
+                        tags[root1]=root2
+                        count-=1
+        return count
 
+def find(self,e,tags):
+    if e!=tags[e]: return self.find(tags[e],tags)
+    return tags[e]
 ```
 
+```
+def findCircleNum(self, M):
+     n=len(M)
+     tags=[i for i in range(n)]
+     def find(e,tags):
+         while e!=tags[e]:e=tags[e]
+         return e
+     for i in range(n):
+         for j in range(i+1,n):
+             if M[i][j]:
+                 tags[find(i,tags)]=find(j,tags)
+
+     return sum(i==tags[i] for i in range(n))
+        
 ```
 ## 684
+```
+def findRedundantConnection(self, edges):
+        """
+        :type edges: List[List[int]]
+        :rtype: List[int]
+        """
+        def find(e,tags):
+            if tags[e]==-1: return e
+            else:
+                tags[e]=find(tags[e],tags)
+            return  tags[e]
+        tags=[-1 for i in range(len(edges)+1)]
+        for u,v in edges:
+            root1=find(u,tags)
+            root2=find(v,tags)
+            if root1==root2: return [u,v]
+            else: tags[root1]=root2
+```
