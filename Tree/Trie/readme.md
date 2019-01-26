@@ -63,3 +63,60 @@ class Trie(object):
                 cur=cur.node[index]
         cur.isword=True
 ```
+
+# 208
+```
+class Trie(object):
+
+    def __init__(self):
+        """
+        Initialize your data structure here.
+        """
+        self.root={}
+        
+
+    def insert(self, word):
+        """
+        Inserts a word into the trie.
+        :type word: str
+        :rtype: void
+        """
+        cur=self.root
+        for char in word:
+            if char not in cur:
+                cur[char]={}
+                cur=cur[char]
+            else:
+                cur=cur[char]
+        cur['#']='True'
+
+        
+
+    def search(self, word):
+        """
+        Returns if the word is in the trie.
+        :type word: str
+        :rtype: bool
+        """
+        cur=self.root
+        for char in word:
+            if char not in cur:
+                return False
+            cur=cur[char]
+        return "#" in cur
+
+        
+
+    def startsWith(self, prefix):
+        """
+        Returns if there is any word in the trie that starts with the given prefix.
+        :type prefix: str
+        :rtype: bool
+        """
+        cur=self.root
+        for char in prefix:
+            if char not in cur:
+                return False
+            cur=cur[char]
+        return True
+```
