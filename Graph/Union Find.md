@@ -13,10 +13,13 @@
 tags=[i for i in range(n)]
 
 def find(e,tags):
-    if tags[e]==e:
-      return True
-    else:
-      find(tags[e],tags)# find an ancestor
+    if tags[e]!= e:
+      return find(tags[e],tags)
+    return tags[e]
+      
+def find(e,tags):
+    while e!=tags[e]:e=tags[e]
+    return e
 
 def union(e1,e2):
     root1=find(e1,tags)
