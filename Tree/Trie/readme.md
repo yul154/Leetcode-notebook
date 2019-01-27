@@ -146,5 +146,84 @@ class WordFilter:
 ```
 * Using trie
 ```
+from collections import defaultdict
+Trie= lambda: defaultdict(Trie)
+W=None
+class WordFilter:
 
+    def __init__(self, words):
+        """
+        :type words: List[str]
+        """
+        self.pre=Trie()
+        self.suf=Trie()
+        for w,word in enumerate(words):
+            cur=self.pre
+            self.addw(cur,w)
+            for char in word:
+                cur=cur[char]
+                self.addw(cur,w)
+            cur=self.suf
+            self.addw(cur,w)
+            for char in word[::-1]:
+                cur=cur[char]
+                self.addw(cur,w)
+    def addw(self,node,w):
+        if W not in node:
+            node[W]={w}
+        else:
+            node[W].add(w)
+
+    def f(self, prefix, suffix):
+        """
+        :type prefix: str
+        :type suffix: str
+        :rtype: int
+        """
+        cur1=self.pre
+        for char in prefix:
+            if char not in cur1: return -1
+            cur1=cur1[char]
+        cur2=self.suf
+        for char in suffix[::-1]:
+            if char not in cur2: return -1
+            cur2=cur2[char]
+        return max(cur1[W]&cur2[W])
+```
+
+# 648
+```
+ class Trie():
+    def __init__(self):
+        self.root={}
+    def insert(self,word):
+        cur=self.root
+        for char in word:
+            if char not in cur:
+                cur[char]={}
+            cur=cur[char]
+        cur['#']=word
+    def replace(self,word):
+        cur=self.root
+        for char in word:
+            if char not in cur:
+                return word
+            cur=cur[char]
+            if cur.get('#'):return cur['#']
+        return word
+class Solution:
+    def replaceWords(self, dict, sentence):
+        """
+        :type dict: List[str]
+        :type sentence: str
+        :rtype: str
+        """
+        trie=Trie()
+        for word in dict:
+            trie.insert(word)
+        words=sentence.split(' ')
+        for i in range(len(words)):
+            words[i]=trie.replace(words[i])
+        
+        return ' '.join(words)
 ```
