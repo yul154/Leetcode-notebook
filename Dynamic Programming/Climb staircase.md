@@ -19,4 +19,4 @@ def climb_improve(n):
         second=third
     return third
 ```
-## if the question only consider current situation and few number of situaions not all situations. we can use roll array instead of whole DP array.
+## If the question only consider current situation and few number of situaions not all situations. we can use roll array instead of whole DP array.
