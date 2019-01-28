@@ -1,4 +1,8 @@
-# Climb staircase 
+# DP
+* the problem about figure out max or min answer
+* about possible 
+* the number of all solutions 
+## Climb staircase 
 > Climb one or two ladder each time, how many paths for a given number of staircase
 ```
 def climb(n):
