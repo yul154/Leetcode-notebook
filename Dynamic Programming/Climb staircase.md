@@ -14,9 +14,9 @@ def climb_improve(n):
     first=1
     second=2
     for i in range(2,n):
-        third=first+second
-        first=second
+        third=first+second # roll array
+        first=second# roll array
         second=third
     return third
 ```
-## DP is not ideal soluation for question only consider current situation and few number of situaions not all situations.
+## if the question only consider current situation and few number of situaions not all situations. we can use roll array instead of whole DP array.
